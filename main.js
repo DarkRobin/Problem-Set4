@@ -24,22 +24,19 @@
 
 //2
 var longestWord = function(string){
-	console.log(string);
 	var chopped = string.split(' ');
-	console.log('this is chopped: ', chopped);
-	// var choppedAgain = chopped.length;
-	// console.log('this is choppedAgain: ', choppedAgain);
-	for (var i = 0; i < chopped.length; i++){
-		console.log('started for loop: ', chopped[i]);
-		var counted = chopped[i].length;
-		console.log('counted: ', counted);
-		if (Math.max(counted)){
-			console.log('in if statment: ', chopped[i]);
-			// return chopped[i],
-		};
-
-	};
-
+	var countedArray = [];
+	var filtered = _.filter(chopped, function(num){
+		var counted = num.length;
+		var arrayed = countedArray.push(counted);
+		return arrayed
+	});
+	var max = _.max(countedArray);
+	var indexOfNumber = _.indexOf(countedArray, max);
+	var longWord = filtered[indexOfNumber];
+	return longWord
 };
 
-longestWord('Hello are you having a nice day?')
+console.log(longestWord('Hello are you having a nice day?'));
+console.log(longestWord('It is a wonderfully beautifull day this afternoon'));
+console.log(longestWord('hi how are you'));
